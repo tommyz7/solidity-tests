@@ -1,2 +1,2 @@
-# Let-s-buy-it-together
+# Let's buy it together
 Dapp for crowd orders.
