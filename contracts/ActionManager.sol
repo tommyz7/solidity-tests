@@ -37,7 +37,7 @@ contract ActionManager is ContractManagerEnabled {
         if (perms == 0x0) {
             bool accessGranted = true;
         } else {
-            bool accessGranted = PermValidator(perms).validate(msg.sender, actionAddr);
+            accessGranted = PermValidator(perms).validate(msg.sender, actionAddr);
         }
         if (!accessGranted) {
             ActionCall(msg.sender, actionName, block.number, false);
