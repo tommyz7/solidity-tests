@@ -1,4 +1,4 @@
-pragma solidity 0.4.15;
+pragma solidity 0.4.17;
 
 
 import 'truffle/Assert.sol';
@@ -13,6 +13,11 @@ contract TestContractManagerEnabled {
     function testSetCMAddress() {
         bool result = CME.setCMAddress(CM);
         Assert.equal(result, true, "Contract manager should be set.");
+    }
+
+    function testSetZeroAddress() {
+        bool result = CME.setCMAddress(0x0);
+        Assert.equal(result, false, "Zero address should not be added.");
     }
 
     function testDoubleSetCMAddress() {

@@ -1,4 +1,4 @@
-pragma solidity 0.4.15;
+pragma solidity 0.4.17;
 
 
 import 'truffle/Assert.sol';
@@ -19,6 +19,11 @@ contract TestContractManager {
     function testAddContract() {
         bool result = CM.addContract(contract1, CME1);
         Assert.equal(result, true, "Contract should be added.");
+    }
+
+    function testAddZeroContract() {
+        bool result = CM.addContract("contractzero", 0x0);
+        Assert.equal(result, false, "Zero address should not be added.");
     }
 
     function testAddContractWithAlreadyUsedName() {
