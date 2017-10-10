@@ -10,22 +10,22 @@ contract TestContractManagerEnabled {
     ContractManagerEnabled CME = new ContractManagerEnabled();
     ContractManager CM = new ContractManager();
 
-    function testSetCMAddress() {
+    function testSetCMAddress() public {
         bool result = CME.setCMAddress(CM);
         Assert.equal(result, true, "Contract manager should be set.");
     }
 
-    function testSetZeroAddress() {
+    function testSetZeroAddress() public {
         bool result = CME.setCMAddress(0x0);
         Assert.equal(result, false, "Zero address should not be added.");
     }
 
-    function testDoubleSetCMAddress() {
+    function testDoubleSetCMAddress() public {
         bool result = CME.setCMAddress(CM);
         Assert.equal(result, false, "Contract manager is set already. It should fail.");
     }
 
-    function testChangeCMbyCurrentContractManager() {
+    function testChangeCMbyCurrentContractManager() public {
         ContractManagerEnabled CMEn = new ContractManagerEnabled();
         bool result = CMEn.setCMAddress(this);
         Assert.equal(result, true, "Contract manager should be set.");
