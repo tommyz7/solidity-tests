@@ -1,4 +1,4 @@
-pragma solidity ^0.4.15;
+pragma solidity 0.4.17;
 
 
 contract DoublyLinkedListOfContracts {
@@ -14,7 +14,7 @@ contract DoublyLinkedListOfContracts {
         address data;
     }
 
-    function contracts(bytes32 key) public returns (address) {
+    function contracts(bytes32 key) public view returns (address) {
         return elements[key].data;
     }
 
