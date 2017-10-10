@@ -1,9 +1,9 @@
-pragma solidity ^0.4.15;
+pragma solidity 0.4.17;
 
 
 import 'zeppelin-solidity/contracts/lifecycle/Destructible.sol';
 import './DoublyLinkedListOfContracts.sol';
-import './ContractManagerEnabled.sol';
+import './Interfaces/ContractManagerProvider.sol';
 
 
 contract ContractManager is DoublyLinkedListOfContracts, Destructible {
@@ -21,7 +21,7 @@ contract ContractManager is DoublyLinkedListOfContracts, Destructible {
      */
     function addContract(bytes32 name, address addr) public onlyOwner returns(bool success) {
         // set contract manager so added contract can access contract's DB
-        if (!ContractManagerEnabled(addr).setCMAddress(address(this))) {
+        if (addr == 0x0 || !ContractManagerProvider(addr).setCMAddress(this)) {
             AddContract(name, addr, 403);
             return false;
         }
