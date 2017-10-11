@@ -29,7 +29,7 @@ contract Validee is ContractManagerEnabled {
         }
     }
 
-    function validate() internal view returns(bool result) {
+    function validate() internal returns(bool result) {
         if (CM != 0x0) {
             address am = ContractProvider(CM).contracts("actionmanager");
             if (am != 0x0) {

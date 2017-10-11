@@ -55,7 +55,6 @@ contract ActionManager is ContractManagerEnabled {
 
     /**
      * @dev when you deploy new contracts or make changes you don't want users to do transactions
-     * @return {[type]} [description]
      */
     function lock() public returns(bool) {
         if (msg.sender != activeAction || locked) {
