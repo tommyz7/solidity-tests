@@ -3,7 +3,6 @@ pragma solidity 0.4.17;
 
 import './ContractManagerEnabled.sol';
 import './ActionManager.sol';
-import './Interfaces/ContractProvider.sol';
 import './Interfaces/ActionManagerProvider.sol';
 
 

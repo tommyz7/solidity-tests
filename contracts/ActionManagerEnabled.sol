@@ -2,7 +2,6 @@ pragma solidity 0.4.17;
 
 
 import './ContractManagerEnabled.sol';
-import './Interfaces/ContractProvider.sol';
 
 
 contract ActionManagerEnabled is ContractManagerEnabled {

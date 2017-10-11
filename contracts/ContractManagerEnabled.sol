@@ -1,6 +1,9 @@
 pragma solidity 0.4.17;
 
 
+import './Interfaces/ContractProvider.sol';
+
+
 contract ContractManagerEnabled {
     address public CM;
 
