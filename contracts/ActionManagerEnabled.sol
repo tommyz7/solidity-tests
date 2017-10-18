@@ -19,6 +19,7 @@ contract ActionManagerEnabled is ContractManagerEnabled {
             _;
         } else {
             UnauthorisedCall(msg.sender, this, block.number);
+            revert();
         }
     }
 
