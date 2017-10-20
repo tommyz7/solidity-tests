@@ -17,19 +17,20 @@ contract ActionManager is ContractManagerEnabled {
         address indexed caller,
         bytes32 indexed actionName,
         uint256 blockNumber,
-        bool indexed success
+        bool indexed success,
+        uint32 messageCode
         );
 
     function execute(bytes32 actionName, bytes data) public returns(bool) {
         address actiondb = ContractProvider(CM).contracts("actiondb");
         if (actiondb == 0x0) {
-            ActionCall(msg.sender, actionName, block.number, false);
+            ActionCall(msg.sender, actionName, block.number, false, 500);
             return false;
         }
 
         address actionAddr = ActionDbProvider(actiondb).actions(actionName);
         if (actionAddr == 0x0) {
-            ActionCall(msg.sender, actionName, block.number, false);
+            ActionCall(msg.sender, actionName, block.number, false, 404);
             return false;
         }
 
@@ -37,10 +38,10 @@ contract ActionManager is ContractManagerEnabled {
         if (perms == 0x0) {
             bool accessGranted = true;
         } else {
-            bool accessGranted = PermValidator(perms).validate(msg.sender, actionAddr);
+            accessGranted = PermValidator(perms).validate(msg.sender, actionAddr);
         }
         if (!accessGranted) {
-            ActionCall(msg.sender, actionName, block.number, false);
+            ActionCall(msg.sender, actionName, block.number, false, 401);
             return false;
         }
 
@@ -49,13 +50,12 @@ contract ActionManager is ContractManagerEnabled {
         bool result = actionAddr.call(data);
         activeAction = 0x0;
 
-        ActionCall(msg.sender, actionName, block.number, result);
+        ActionCall(msg.sender, actionName, block.number, result, 200);
         return result;
     }
 
     /**
      * @dev when you deploy new contracts or make changes you don't want users to do transactions
-     * @return {[type]} [description]
      */
     function lock() public returns(bool) {
         if (msg.sender != activeAction || locked) {

@@ -3,7 +3,6 @@ pragma solidity 0.4.17;
 
 import './ContractManagerEnabled.sol';
 import './ActionManager.sol';
-import './Interfaces/ContractProvider.sol';
 import './Interfaces/ActionManagerProvider.sol';
 
 
@@ -29,7 +28,7 @@ contract Validee is ContractManagerEnabled {
         }
     }
 
-    function validate() internal view returns(bool result) {
+    function validate() internal returns(bool result) {
         if (CM != 0x0) {
             address am = ContractProvider(CM).contracts("actionmanager");
             if (am != 0x0) {

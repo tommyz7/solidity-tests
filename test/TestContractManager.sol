@@ -19,6 +19,8 @@ contract TestContractManager {
     function testAddContract() public {
         bool result = CM.addContract(contract1, CME1);
         Assert.equal(result, true, "Contract should be added.");
+        address addr = CM.contracts(contract1);
+        Assert.equal(addr, CME1, "Contract has not been added.");
     }
 
     function testAddZeroContract() public {
@@ -56,5 +58,7 @@ contract TestContractManager {
     function testRemoveContract() public {
         bool result = CM.removeContract(contract1);
         Assert.equal(result, true, "Result of removeContract should be true.");
+        address addr = CM.contracts(contract1);
+        Assert.equal(addr, 0x0, "Contract has not been removed.");
     }
 }

@@ -1,7 +1,7 @@
 var ContractManager = artifacts.require("./ContractManager.sol");
 var ActionManager = artifacts.require("./ActionManager.sol");
 var ActionDB = artifacts.require("./ActionDB.sol");
-var Permissions = artifacts.require("./PermissionsDB.sol");
+var Permissions = artifacts.require("./PermissionDB.sol");
 
 
 module.exports = function(deployer, network, accounts) {

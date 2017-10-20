@@ -2,7 +2,6 @@ pragma solidity 0.4.17;
 
 
 import './Validee.sol';
-import './Interfaces/ContractProvider.sol';
 import './Interfaces/ActionManagerProvider.sol';
 import './Interfaces/ActionProvider.sol';
 
