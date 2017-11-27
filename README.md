@@ -1,2 +1,2 @@
-# Let's buy it together
-Dapp for crowd orders.
+# Solidity tests
+Test project for experiments
